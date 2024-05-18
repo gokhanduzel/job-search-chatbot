@@ -10,8 +10,8 @@ def extract_keywords():
     keywords = []
     for desc in descriptions:
         doc = nlp(desc)
-        keywords.extend([token.text for token in doc if token.is_alpha and not token.is_stop])
+        keywords.append([token.text for token in doc if token.is_alpha and not token.is_stop])
     return jsonify({"keywords": keywords})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
